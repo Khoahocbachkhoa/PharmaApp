@@ -1,17 +1,7 @@
-# Backend
-backend/venv/
-backend/app/__pycache__/
-backend/app/routes/__pycache__/
-backend/__pycache__/
-backend/*.db
-backend/.env
-backend/app/routes/test.py
-
-# Frontend
-frontend/node_modules/
-frontend/dist/
-frontend/.env
-frontend/.env.*
-frontend/.cache/
-frontend/npm-debug.log*
-frontend/yarn-error.log*
+node_modules/
+dist/
+.env
+.env.*
+.cache/
+npm-debug.log*
+yarn-error.log*
