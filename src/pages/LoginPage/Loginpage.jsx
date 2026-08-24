@@ -84,11 +84,6 @@ function LoginPage() {
             Đăng nhập
           </button>
         </form>
-
-        <div className={styles.signupBox}>
-          Chưa có tài khoản?
-          <span className={styles.signupLink}>Đăng ký</span>
-        </div>
       </div>
     </div>
   );
