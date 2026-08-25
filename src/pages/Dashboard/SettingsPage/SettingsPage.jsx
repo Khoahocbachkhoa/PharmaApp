@@ -1,5 +1,3 @@
-// Phiên bản 1 : Setting page chỉ có mỗi cái nút đăng xuất đơn giản!!!
-
 import styles from "../../../styles/SettingsPage.module.css";
 
 export default function SettingsPage() {

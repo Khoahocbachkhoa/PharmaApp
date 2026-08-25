@@ -1,4 +1,4 @@
-import axiosClient from "./axiosClient";
+import axiosClient from "./axios";
 
 // Lấy danh sách tùy chọn Thuốc
 export const getMedicineOptionsApi = () => {

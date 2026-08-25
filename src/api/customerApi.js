@@ -1,4 +1,4 @@
-import axiosClient from "./axiosClient";
+import axiosClient from "./axios";
 
 export const getCustomersApi = () => {
   return axiosClient.get(`/api/customers`);

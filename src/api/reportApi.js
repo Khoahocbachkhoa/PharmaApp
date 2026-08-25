@@ -1,4 +1,4 @@
-import axiosClient from "./axiosClient";
+import axiosClient from "./axios";
 
 // Lấy doanh thu theo tháng
 export const getSaleByMonth = () => {

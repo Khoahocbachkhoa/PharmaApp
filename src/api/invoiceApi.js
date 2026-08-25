@@ -1,4 +1,4 @@
-import axiosClient from "./axiosClient";
+import axiosClient from "./axios";
 
 // Lấy danh sách hóa đơn
 export const getInvoicesApi = (filterType, searchQuery) => {

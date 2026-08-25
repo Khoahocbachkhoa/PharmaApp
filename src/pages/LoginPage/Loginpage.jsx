@@ -9,26 +9,30 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
     setError("");
 
     try {
       const res = await loginApi(username, password);
-      const { access_token, msg } = res.data;
+      const { loggedIn } = res.data;
 
-      // Lưu JWT
-      localStorage.setItem("token", access_token);
+      if (loggedIn == "true" || loggedIn == true) {
+        localStorage.setItem("loggedIn", loggedIn);
+        navigate("/dashboard");
+      } else {
+        setError("Đăng nhập thất bại");
+      }
 
-      alert(msg);
-      navigate("/dashboard");
-      
     } catch (err) {
       if (err.response) {
         setError(err.response.data.msg);
       } else {
-        setError("Không thể kết nối tới server");
+        setError("Lỗi server");
       }
     }
   };
@@ -38,12 +42,13 @@ function LoginPage() {
       <div className={styles.loginCard}>
         <h2 className={styles.loginTitle}>Đăng nhập</h2>
 
-        <form className={styles.form}>
-          {/* username */}
+        <form className={styles.form} onSubmit={handleLogin}>
           <div className={styles.inputGroup}>
             <label className={styles.inputLabel}>Tên đăng nhập</label>
+
             <div className={styles.inputField}>
-              <FaUser style={{ color: "#9ca3af", marginRight: 10 }} />
+              <FaUser className={styles.FaUserLock} />
+
               <input
                 className={styles.input}
                 type="text"
@@ -54,11 +59,12 @@ function LoginPage() {
             </div>
           </div>
 
-          {/* pass */}
           <div className={styles.inputGroup}>
             <label className={styles.inputLabel}>Mật khẩu</label>
+
             <div className={styles.inputField}>
-              <FaLock style={{ color: "#9ca3af", marginRight: 10 }} />
+              <FaLock className={styles.FaUserLock} />
+
               <input
                 className={styles.input}
                 type="password"
@@ -69,18 +75,9 @@ function LoginPage() {
             </div>
           </div>
 
-          {/* err */}
-          {error && (
-            <div style={{ color: "red", fontSize: 12 }}>
-              {error}
-            </div>
-          )}
+          {error && <div className={styles.error}>{error}</div>}
 
-          <button
-            type="button"
-            className={styles.loginBtn}
-            onClick={handleLogin}
-          >
+          <button type="submit" className={styles.loginBtn}>
             Đăng nhập
           </button>
         </form>

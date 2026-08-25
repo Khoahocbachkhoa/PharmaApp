@@ -1,8 +1,8 @@
-import axiosClient from "./axiosClient";
+import axiosClient from "./axios";
 
 export const loginApi = (username, password) => {
   return axiosClient.post(`/login`, {
-    username,
-    password
+    "username": username,
+    "password": password
   });
 };
